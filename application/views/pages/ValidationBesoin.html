@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <p class="header-content">
+        <input type="text" name="" id="" placeholder="Search for ..."><input type="button" value="Search">
+        </p>
+    </header>
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-grid"></i>
+              <span class="titre">Commerce</span>
+            </a>
+          </li>
+    
+        <ul class="sidebar-nav" id="sidebar-nav">
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="index.jsp">
+              <i class="bi bi-grid"></i>
+              <span> Creation de besoin d'achat</span>
+            </a>
+          </li>
+    
+          <li class="nav-item">
+            <a class="nav-link" href="Sortiestock.jsp">
+              <i class="bi bi-grid"></i>
+              <span>Validation de besoin </span>
+            </a>
+          </li>
+    
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="ChoixEtatStock.jsp">
+              <i class="bi bi-grid"></i>
+              <span>Liste des besoins d'achat</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="EtatStock.jsp">
+              <i class="bi bi-grid"></i>
+              <span>Selection des besoins</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="EtatStock.jsp">
+              <i class="bi bi-grid"></i>
+              <span>Listes des demandes</span>
+            </a>
+          </li>
+    
+        </ul>
+      </aside>
+
+      <div class="card">
+        <div class="container-besoin">
+            <h5 class="title">Validation besoin d'achat</h5>
+            
+            <p>Liste des besoins d'achat du departement ?Finance? </p>
+            <form action="" method="get">
+            <p>Filtre
+                <select name="" id="">
+                    <option value="">Sentrison</option>
+                </select>
+                <input type="submit" name="" value="Filtrer">
+            </p>
+            </form>
+            <form action="" method="get">
+                    <div class="card-body">
+        
+                      <!-- Table with stripped rows -->
+                      <p>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">service</th>
+                            <th scope="col">Apercu besoin</th>
+                            <th scope="col">Delai de livraison</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Developpement</td>
+                            <td>Cahier-Stylo,..</td>
+                            <td>2016-05-25</td>
+                            <td class="action2">
+                                <button class="valider" >Valider</button>
+                                <button class="refuser" >Refuser</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Developpement</td>
+                            <td>Cahier-Stylo,..</td>
+                            <td>2016-05-25</td>
+                            <td class="action2">
+                                <button class="valider" >Valider</button>
+                                <button class="refuser" >Refuser</button>
+                            </td>
+                          </tr>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </p>
+                    </div>
+                  </div>
+        <p class="trans">.</p>
+    </div>
+
+</body>
+</html>
