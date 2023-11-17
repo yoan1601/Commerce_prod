@@ -52,32 +52,41 @@ $niveau = $user->niveau_poste;
           </li>
           <?php } ?>
     
+          <?php if($user->id_dept== 3) { ?>
           <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="<?= site_url('besoinAchat\toListeBesoinGrpParArticle') ?>">
               <i class="bi bi-grid"></i>
               <span>Liste des besoins d'achat</span>
             </a>
           </li>
+          <?php } ?>
           
+          <?php if($user->id_dept== 3) { ?>
           <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="<?= site_url("besoinAchat/toSelectBesoin") ?>">
               <i class="bi bi-grid"></i>
               <span>Selection des besoins</span>
             </a>
           </li>
+          <?php } ?>
 
+          <?php if($user->id_dept== 3) { ?>
           <li class="nav-item">
             <a class="nav-link collapsed" href="#">
               <i class="bi bi-grid"></i>
-              <span>Liste des demandes PF</span>
+              <span>Liste des demandes proforma</span>
             </a>
           </li>
+          <?php } ?>
+
+          <?php if($user->id_dept== 3) { ?>
           <li class="nav-item">
             <a class="nav-link collapsed" href="#">
               <i class="bi bi-grid"></i>
-              <span>Liste de bon d'achat</span>
+              <span>Liste de bon de commande</span>
             </a>
           </li>
+          <?php } ?>
     
         </ul>
       </aside>

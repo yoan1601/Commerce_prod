@@ -136,5 +136,6 @@ $autoload['model'] = array(
     'SaisieProformaModel' => 'saisieproforma',
     'MoinsDisantModel' => 'moinsdisant',
     'LoginModel' => 'login',
-    'BesoinAchatModel' => 'besoinAchat'
+    'BesoinAchatModel' => 'besoinAchat',
+    'ProformaModel' => 'proforma'
 );

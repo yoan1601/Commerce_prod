@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class BesoinAchatModel extends CI_Model {
+class BesoinAchatModel extends CI_Model
+{
 
 	/**
 	 * Index Page for this controller.
@@ -19,68 +20,118 @@ class BesoinAchatModel extends CI_Model {
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
 
-	public function getBesoinAchatById($id) {
+	public function insertDetailDemandeProforma($idDemande, $idArticle, $qte) {
+		$data = array(
+			'id_demande_detail_demande' => $idDemande,
+			'id_article_detail_demande' => $idArticle,
+			'quantite_detail_demande' => $qte
+		);	
+		$this->db->insert('detail_demande_proformas', $data);
+		$insert_id = $this->db->insert_id();
+		return $insert_id;
+	}
+
+	public function insertDemandeProforma($dateDemande) {
+		$data = array(
+			'date_demande' => $dateDemande
+		);
+		$this->db->insert('demande_proformas', $data);
+		$insert_id = $this->db->insert_id();
+		return $insert_id;
+	}
+
+	public function selectBesoinAchatGroupeByArticle($idArticle) {
+		$query = "select * from v_besoin_grpByArticle where id_article = ".$idArticle;
+		$query = $this->db->query($query);
+		return $query->row();
+	}
+
+	public function selectBesoinAchatGroupe($idcategorie = 0)
+	{
+		$query = "select * from v_besoin_grpByArticle";
+		if ($idcategorie > 0) {
+			$query = "select * from v_besoin_grpByArticle WHERE id_categorie = ".$idcategorie;
+		}
+		$query = $this->db->query($query);
+		return $query->result();
+	}
+
+	public function selectAllCategorie()
+	{
+		$query = "select * from categories";
+		$query = $this->db->query($query);
+		return $query->result();
+	}
+
+	public function getBesoinAchatById($id)
+	{
 		$this->db->where('id_besoin', $id);
-        $query = $this->db->get('besoin_achats');
-        $besoin = $query->row();
+		$query = $this->db->get('besoin_achats');
+		$besoin = $query->row();
 		$besoin->details = $this->besoinAchat->getDetailForBesoinAchat($besoin->id_besoin);
 		return $besoin;
 	}
-	
-	public function refuserBesoin($idBesoin) {
+
+	public function refuserBesoin($idBesoin)
+	{
 		$this->db->where('id_besoin_detail_besoin', $idBesoin);
-        $this->db->delete('detail_besoin_achats');
+		$this->db->delete('detail_besoin_achats');
 		$this->db->where('id_besoin', $idBesoin);
-        $this->db->delete('besoin_achats');
+		$this->db->delete('besoin_achats');
 	}
 
-	public function validerBesoin($idEmp, $idBesoin) {
+	public function validerBesoin($idEmp, $idBesoin)
+	{
 		$data = array(
 			'id_emp_valid_besoin' => $idEmp,
-			'id_besoin_valid_besoin' => $idBesoin	
+			'id_besoin_valid_besoin' => $idBesoin
 		);
 		$this->db->insert('validation_besoin_achats', $data);
 		$insert_id = $this->db->insert_id();
-        return $insert_id;
+		return $insert_id;
 	}
 
-	public function selectAllService($idDept = 0) {
-		$query="select * from services";
-		if($idDept > 0) {
-			$query="select * from services where id_dept_service = ".$idDept;
+	public function selectAllService($idDept = 0)
+	{
+		$query = "select * from services";
+		if ($idDept > 0) {
+			$query = "select * from services where id_dept_service = " . $idDept;
 		}
-		$query=$this->db->query($query);
+		$query = $this->db->query($query);
 		$allService = $query->result();
 		return $allService;
 	}
 
-	public function selectAllBesoinAchatsNonValide($idDept = 0, $idService = 0) {
-		$query="SELECT * from v_besoiAchat_validation WHERE id_valid_besoin IS NULL";
-		if($idDept > 0) {
-			$query="SELECT * from v_besoiAchat_validation WHERE id_valid_besoin IS NULL AND id_dept = ".$idDept;
+	public function selectAllBesoinAchatsNonValide($idDept = 0, $idService = 0)
+	{
+		$query = "SELECT * from v_besoiAchat_validation WHERE id_valid_besoin IS NULL";
+		if ($idDept > 0) {
+			$query = "SELECT * from v_besoiAchat_validation WHERE id_valid_besoin IS NULL AND id_dept = " . $idDept;
 		}
 
-		if($idService > 0) {
-			$query .= ' AND id_service = '.$idService;
+		if ($idService > 0) {
+			$query .= ' AND id_service = ' . $idService;
 		}
-		
-        $query=$this->db->query($query);
-        $allBesoins = $query->result();
+
+		$query = $this->db->query($query);
+		$allBesoins = $query->result();
 		$resultat = array();
 		foreach ($allBesoins as $key => $besoin) {
 			$besoin->details = $this->besoinAchat->getDetailForBesoinAchat($besoin->id_besoin);
-			$resultat [] = $besoin;
+			$resultat[] = $besoin;
 		}
 		return $resultat;
 	}
 
-	public function getDetailForBesoinAchat($idBesoin) {
-		$query="select * from v_detail_besoin_article where id_besoin_detail_besoin = ".$idBesoin;
-		$query=$this->db->query($query);
-        return $query->result();
+	public function getDetailForBesoinAchat($idBesoin)
+	{
+		$query = "select * from v_detail_besoin_article where id_besoin_detail_besoin = " . $idBesoin;
+		$query = $this->db->query($query);
+		return $query->result();
 	}
 
-	public function insertDetailBesoinAchat($idBesoinAchat, $idArticle, $quantite) {
+	public function insertDetailBesoinAchat($idBesoinAchat, $idArticle, $quantite)
+	{
 		$data = array(
 			'id_besoin_detail_besoin' => $idBesoinAchat,
 			'id_article_detail_besoin' => $idArticle,
@@ -90,19 +141,21 @@ class BesoinAchatModel extends CI_Model {
 		return $this->db->insert('detail_besoin_achats', $data);
 	}
 
-	public function insertBesoinAchatAndGetId($idService, $delaiLivraison) {
+	public function insertBesoinAchatAndGetId($idService, $delaiLivraison)
+	{
 		$data = array(
 			'id_service_besoin' => $idService,
 			'delai_livraison_besoin' => $delaiLivraison
 		);
 		$this->db->insert('besoin_achats', $data);
 		$insert_id = $this->db->insert_id();
-        return $insert_id;
+		return $insert_id;
 	}
 
-	public function selectAllArticles(){
-        $query="select * from v_article";
-        $query=$this->db->query($query);
-        return $query->result();
-    }
+	public function selectAllArticles()
+	{
+		$query = "select * from v_article";
+		$query = $this->db->query($query);
+		return $query->result();
+	}
 }
