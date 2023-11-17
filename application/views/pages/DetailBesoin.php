@@ -38,8 +38,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </p>
                     </div>
                     <p class="final">
-                    <button class="valider"> <img src="<?= base_url("assets\icons\icons8-check-48 (2).png") ?>" alt="" srcset=""> Valider</button>
-                    <button class="refuser" > <img src="<?= base_url("assets\icons\icons8-cross-48 (1).png") ?>" alt="" srcset="">Refuser</button>
+                    <button class="valider"><a style="color: white;" href="<?= site_url("besoinAchat/validerBesoinAchat/" . $user->id_emp . "/" . $besoin->id_besoin) ?>"> <img src="<?= base_url("assets\icons\icons8-check-48 (2).png") ?>" alt="" srcset=""> Valider</a></button>
+                  <button class="refuser"><a style="color: white;" href="<?= site_url("besoinAchat/refuserBesoinAchat/" . $besoin->id_besoin) ?>"><img src="<?= base_url("assets\icons\icons8-cross-48 (1).png") ?>" alt="" srcset="">Refuser</a></button>
                   </p> 
                   </div>
         <p class="trans">.</p>
