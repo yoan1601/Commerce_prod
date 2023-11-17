@@ -7,10 +7,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
       <div class="card">
         <div class="container-besoin">
-            <h5 class="title">Detail des besoin d'achat</h5>
+            <h5 class="title">Detail du besoin d'achat</h5>
             
-            <p>Service : Finance</p>
-            <p>Delai de livraison :2016-05-25</p>
+            <p>Service : <?= $user->nom_dept ?></p>
+            <p>Delai de livraison : <?= $besoin->delai_livraison_besoin ?></p>
                     <div class="card-body">
         
                       <!-- Table with stripped rows -->
@@ -25,18 +25,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           </tr>
                         </thead>
                         <tbody>
+                          <?php foreach ($besoin->details as $key => $detail) { ?>
                           <tr>
-                            <td>Cahier</td>
-                            <td>Accessoire</td>
-                            <td>10</td>
-                            <td>piece</td>
+                            <td><?= $detail->nom_article ?></td>
+                            <td><?= $detail->nom_categorie ?></td>
+                            <td><?= $detail->quantite_detail_besoin ?></td>
+                            <td><?= $detail->nom_unite ?></td>
                           </tr>
-                          <tr>
-                            <td>Cahier</td>
-                            <td>Accessoire</td>
-                            <td>10</td>
-                            <td>piece</td>
-                          </tr>
+                          <?php } ?>
                         </tbody>
                       </table>
                     </p>
@@ -45,8 +41,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <button class="valider"> <img src="<?= base_url("assets\icons\icons8-check-48 (2).png") ?>" alt="" srcset=""> Valider</button>
                     <button class="refuser" > <img src="<?= base_url("assets\icons\icons8-cross-48 (1).png") ?>" alt="" srcset="">Refuser</button>
                   </p> 
-                  </div>     
-            <p class="trans">.</p>
+                  </div>
+        <p class="trans">.</p>
     </div>
 
 </body>
