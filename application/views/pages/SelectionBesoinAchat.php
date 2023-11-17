@@ -83,6 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       </table>
                     </p>
                     </div>
+                    <p><button>Generer la demande</button</p>
                   </div>
         <p class="trans">.</p>
     </div>

@@ -51,5 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </form>
       <p class="trans">.</p>
     </div>
+    <p class="finalbutton" ><center><button  class="finalbutton">Generer les bons de commande</button></center></p>
+
 </body>
 </html>

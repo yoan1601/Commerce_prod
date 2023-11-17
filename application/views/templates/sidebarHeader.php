@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+$user = $this->session->user;
+$niveau = $user->niveau_poste;
+
 ?>
 
 <!DOCTYPE html>
@@ -7,18 +11,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Commercial</title>
 	<link rel="stylesheet" href="<?= base_url('assets\css\style.css') ?>">
 </head>
 <body>
     <header>
         <p class="header-content">
-        <input type="text" name="" id="" placeholder="Search for ..."><input type="button" value="Search">
+        <?= $user->nom_emp ?> - <strong><?= $user->nom_poste ?></strong> 
         </p>
         <headIcon>
           <img src="<?= base_url("assets\icons\icons8-notification-48.png") ?>" alt="">
           <img src="<?= base_url("assets\icons\icons8-message-48.png") ?>" alt="" srcset="">
-          <img src="<?=  base_url("assets\icons\icons8-user-48.png")?>" alt="" srcset="">
+          <a href="<?= site_url("Deconnection") ?>"><img src="<?=  base_url("assets\icons\icons8-user-48.png")?>" alt="" srcset=""></a>
         </headIcon>
     </header>
     <aside id="sidebar" class="sidebar">
@@ -32,18 +36,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
         <ul class="sidebar-nav" id="sidebar-nav">
           <li class="nav-item">
-            <a class="nav-link collapsed" href="<?= site_url('pages\DefinitionBesoinAchat') ?>">
+            <a class="nav-link collapsed" href="<?= site_url('besoinAchat\creerBesoinAchat') ?>">
               <i class="bi bi-grid"></i>
               <span> Creation de besoin d'achat</span>
             </a>
           </li>
-    
+          <?php if($niveau >= 111) { ?>
           <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="<?= site_url('besoinAchat\toValidationBesoin') ?>">
               <i class="bi bi-grid"></i>
+              
               <span>Validation de besoin </span>
+              
             </a>
           </li>
+          <?php } ?>
     
           <li class="nav-item">
             <a class="nav-link collapsed" href="#">

@@ -74,6 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       </table>
                     </p>
                     </div>
+                    <p><button> faire une selection </button</p>
                   </div>
         <p class="trans">.</p>
     </div>

@@ -126,6 +126,14 @@ header input[type="button"]{
       left: -300px;
     }
   }
+
+  .final{
+    align-items: center;
+  }
+
+  .finalbutton {
+    margin-left: 20%;
+  }
   
   .sidebar::-webkit-scrollbar {
     width: 5px;
