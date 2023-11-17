@@ -134,5 +134,6 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array(
     'LoginModel' => 'login',
-    'BesoinAchatModel' => 'besoinAchat'
+    'BesoinAchatModel' => 'besoinAchat',
+    'ProformaModel' => 'proforma'
 );

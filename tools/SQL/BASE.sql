@@ -61,7 +61,7 @@ CREATE  TABLE bon_commandes (
 	id_bon               INT    NOT NULL AUTO_INCREMENT  PRIMARY KEY,
 	id_fournisseur_bon   INT    NOT NULL   ,
 	date_creation_bon    TIMESTAMP  DEFAULT (CURRENT_TIMESTAMP)  NOT NULL   ,
-	numero_bon           VARCHAR(255)    NOT NULL   ,
+	numero_bon           VARCHAR(255)       ,
 	libelle_bon          VARCHAR(255)    NOT NULL   ,
 	delai_livraison_bon  TIMESTAMP    NOT NULL   ,
 	is_livraison_part_bon INT    NOT NULL   ,

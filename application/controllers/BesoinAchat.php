@@ -23,6 +23,59 @@ class BesoinAchat extends CI_Controller {
         redirect(site_url("besoinAchat/creerBesoinAchat"));
 	}
 
+	public function envoieDemande() {
+		$dateDemande = $this->input->post("dateDemande");
+		$idDemande = $this->besoinAchat->insertDemandeProforma($dateDemande);
+		if($idDemande != false) {
+			for($i = 1; $this->input->post('idArticle'.$i) !== null; $i++) {
+				$idArticle = $this->input->post('idArticle'.$i);
+				$qte = $this->input->post('qte'.$i);
+				$this->besoinAchat->insertDetailDemandeProforma($idDemande, $idArticle, $qte);
+			}
+		}
+		redirect(site_url("besoinAchat/toValidationBesoin"));
+	}
+
+	public function toGenererDemande() {
+		$idArticleGrp = $this->input->post("idArticleGrp");
+		// var_dump($idArticleGrp);
+		$allBesoinGrp = array();
+		foreach ($idArticleGrp as $key => $idArticle) {
+			$allBesoinGrp [] = $this->besoinAchat->selectBesoinAchatGroupeByArticle($idArticle);
+		}
+		$data['allBesoinGrp'] = $allBesoinGrp;
+		$data['dateActuelle'] = date('Y-m-d H:i:s');
+		$SOCIETE = 'COMMPANY';
+		$data['nom_societe'] = $SOCIETE; 
+		$this->load->view("pages/DemandeGenere", $data);
+	}
+
+	public function toSelectBesoinGrpParArticleFiltre() {
+		$idcategorie = $this->input->get("idCategorie");
+		redirect(site_url("besoinAchat/toSelectBesoin/".$idcategorie));
+	}
+
+	public function toSelectBesoin($idcategorie = 0) {
+		$allCategorie = $this->besoinAchat->selectAllCategorie();
+		$data['allCategorie'] = $allCategorie;
+		$allBesoinGrp = $this->besoinAchat->selectBesoinAchatGroupe($idcategorie);
+		$data['allBesoinGrp'] = $allBesoinGrp;
+		$this->load->view("pages/SelectionBesoinAchat", $data);
+	}
+
+	public function toListeBesoinGrpParArticleFiltre() {
+		$idcategorie = $this->input->get("idCategorie");
+		redirect(site_url("besoinAchat/toListeBesoinGrpParArticle/".$idcategorie));
+	}
+
+	public function toListeBesoinGrpParArticle($idcategorie = 0) {
+		$allCategorie = $this->besoinAchat->selectAllCategorie();
+		$data['allCategorie'] = $allCategorie;
+		$allBesoinGrp = $this->besoinAchat->selectBesoinAchatGroupe($idcategorie);
+		$data['allBesoinGrp'] = $allBesoinGrp;
+		$this->load->view("pages/ListeBesoinArticle", $data);
+	}
+
 	public function detailBesoin($idBesoin) {
 		$user = $this->session->user;
 		$data['user'] = $user;
