@@ -41,8 +41,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       </table>
                     </p>
                     </div>
-                  </div>
-        <p class="trans">.</p>
+                    <p class="final">
+                    <button class="valider"> <img src="<?= base_url("assets\icons\icons8-check-48 (2).png") ?>" alt="" srcset=""> Valider</button>
+                    <button class="refuser" > <img src="<?= base_url("assets\icons\icons8-cross-48 (1).png") ?>" alt="" srcset="">Refuser</button>
+                  </p> 
+                  </div>     
+            <p class="trans">.</p>
     </div>
 
 </body>
