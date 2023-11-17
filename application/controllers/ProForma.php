@@ -8,6 +8,8 @@ class ProForma extends CI_Controller {
     }
 
     public function toListeDemande() {
-        selectAllDemandeProforma
+        $allDemande = $this->proforma->selectAllDemandeProforma();
+        $data['allDemande'] = $allDemande;
+        $this->load->view('pages/ListesDemandePF', $data);
     }
 }

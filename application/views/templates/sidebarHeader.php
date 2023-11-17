@@ -72,7 +72,7 @@ $niveau = $user->niveau_poste;
 
           <?php if($user->id_dept== 3) { ?>
           <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="<?= site_url("proforma") ?>">
               <i class="bi bi-grid"></i>
               <span>Liste des demandes proforma</span>
             </a>
