@@ -43,10 +43,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </p>
                 <p>livraison partielle
                   <input type="radio" name="livraisonpart<?= $i ?>" id="" required value="1">oui
-                  <input type="radio" name="livraisonpart<?= $i ?>" id="" selected required value="0">non
+                  <input type="radio" name="livraisonpart<?= $i ?>" id="" required value="0">non
                 </p>
           </div>
           <?php } ?>
+          <input type="hidden" name="demande" value="<?= $demande ?>">
           <button type="submit">Generer les bons de commande</button>
         </form>
       <p class="trans">.</p>
