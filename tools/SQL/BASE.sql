@@ -181,3 +181,5 @@ ALTER TABLE validation_bon_commande_dg ADD CONSTRAINT fk_validation_bon_commande
 ALTER TABLE validation_bon_commande_finances ADD CONSTRAINT fk_validation_bon_commande_finances_bon_commandes FOREIGN KEY ( id_bon_valid_bon_fin ) REFERENCES bon_commandes( id_bon ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE validation_bon_commande_finances ADD CONSTRAINT fk_validation_bon_commande_finances_employes FOREIGN KEY ( id_emp_valid_bon_fin ) REFERENCES employes( id_emp ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE commercial.employes ADD motdepasse VARCHAR(255)  NOT NULL DEFAULT (1234);
