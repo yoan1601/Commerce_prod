@@ -25,51 +25,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           </tr>
                         </thead>
                         <tbody>
+                          <?php foreach($bons as $b){ ?>
                             <tr>
-                                <td>01/01/2023</td>
-                                <td>BC001</td>
-                                <td>F1</td>
-                                <td>12 000 Ar</td>
-                                <td class="action2">
-                                    <button class="valider">Detail</button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>01/01/2023</td>
-                                <td>BC001</td>
-                                <td>F1</td>
-                                <td>12 000 Ar</td>
-                                <td class="action2">
-                                    <button class="valider">Detail</button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>01/01/2023</td>
-                                <td>BC001</td>
-                                <td>F1</td>
-                                <td>12 000 Ar</td>
-                                <td class="action2">
-                                    <button class="valider">Detail</button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>01/01/2023</td>
-                                <td>BC001</td>
-                                <td>F1</td>
-                                <td>12 000 Ar</td>
-                                <td class="action2">
-                                    <button class="valider">Detail</button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>01/01/2023</td>
-                                <td>BC001</td>
-                                <td>F1</td>
-                                <td>12 000 Ar</td>
-                                <td class="action2">
-                                    <button class="valider">Detail</button>
-                                </td>
-                              </tr>
+                              <td><?= $b->date_creation_bon ?></td>
+                              <td><?= $b->numero_bon ?></td>
+                              <td><?= $b->nom_fournisseur ?></td>
+                              <td><?= $b->montant ?> Ar</td>
+                              <td class="action2">
+                                  <button class="valider">Detail</button>
+                              </td>
+                            </tr>
+                          <?php } ?>
                         </tbody>
                       </table>
                     </p>

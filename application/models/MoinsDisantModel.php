@@ -17,6 +17,11 @@ class MoinsDisantModel extends CI_Model {
         for($i=0;$i<count($query);$i++){
             $proformas[$i]["proforma"]=$query[$i];
             $proformas[$i]["details"]=$this->getDetailProforma($query[$i]->id_proforma);
+            $montant=0;
+            foreach($proformas[$i]["details"] as $d){
+                $montant+=$d->ttc_detail_proforma;
+            }
+            $proformas[$i]["montant"]=$montant;
         }
         return $proformas;
     }
