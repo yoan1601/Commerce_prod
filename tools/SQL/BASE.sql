@@ -27,7 +27,8 @@ CREATE  TABLE proformas (
 	id_proforma          INT    NOT NULL AUTO_INCREMENT  PRIMARY KEY,
 	date_proforma        TIMESTAMP  DEFAULT (CURRENT_TIMESTAMP)  NOT NULL   ,
 	id_fournisseur_proforma INT    NOT NULL   ,
-	delai_livraison_proforma TIMESTAMP    NOT NULL   
+	delai_livraison_proforma TIMESTAMP    NOT NULL ,
+	id_demande_proforma_proforma INT    NOT NULL
  ) engine=InnoDB;
 
 CREATE  TABLE services ( 

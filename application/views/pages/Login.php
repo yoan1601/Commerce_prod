@@ -27,19 +27,18 @@
 </head>
 <body>
 <main class="form-signin">
-  <form>
-    <h1 class="h3 mb-3 fw-normal">Connecter vous</h1>
+  <form method="POST" action="<?= site_url("login/seConnecter") ?>">
+    <h1 class="h3 mb-3 fw-normal">Connectez vous</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Adresse email</label>
+      <input type="nom" class="form-control" id="floatingInput" placeholder="nom" name="nom_emp">
+      <label for="floatingInput">Nom</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="mot de passe" name="motdepasse">
       <label for="floatingPassword">Mot de passe</label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">Create account</p>
   </form>
 </main>
     

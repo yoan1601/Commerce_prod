@@ -33,14 +33,14 @@ class Login extends CI_Controller {
         $nom_emp=$this->input->post("nom_emp");
         $motdepasse=$this->input->post("motdepasse");
 		// var_dump([$nom_emp, $motdepasse]);
-        $user=$this->login->checkLogin($nom_emp, $motdepasse);
+        $user=$this->login->checkLogin(trim($nom_emp), trim($motdepasse));
         if($user===false){
 			$error="Nom_ou_mot_de_passe_errone";
             redirect(site_url("login/index/".$error));
         }
         $this->session->set_userdata('user', $user);
 
-		redirect("front/home");
+		redirect(site_url("besoinAchat"));
 		
     }
 }
