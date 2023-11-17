@@ -1,3 +1,19 @@
+CREATE OR REPLACE VIEW v_detail_bon_commande AS (
+    SELECT * 
+    FROM detail_bon_commandes dbc
+    LEFT JOIN articles art ON art.id_article = dbc.id_article_detail_bon
+    LEFT JOIN unites u ON u.id_unite = art.id_unite_article
+    LEFT JOIN categories c ON c.id_categorie = art.id_categorie_article
+);
+
+CREATE OR REPLACE VIEW v_bon_commande AS (
+    SELECT 
+    * 
+    FROM bon_commandes bc 
+    LEFT JOIN fournisseurs f ON f.id_fournisseur = bc.id_fournisseur_bon
+    LEFT JOIN mode_paiements mp ON mp.id_mode_paiement = bc.id_mode_paie_bon
+);
+
 CREATE OR REPLACE VIEW v_detail_demande_proforma AS (
     SELECT * 
     FROM detail_demande_proformas ddpf
