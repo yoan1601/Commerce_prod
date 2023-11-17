@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="card">
         <div class="container-besoin">
             <h5 class="title">Saisie de pro forma</h5>
-            <form action="" method="get">
+            <form action="<?= site_url()."/saisieProforma/save" ?>" method="post">
                 <p>Fournisseur
                     <select name="fournisseur" id="">
                         <?php foreach($fournisseurs as $f){ ?>
@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         libelle_puht.step="0.01";
         libelle_puht.className="saisie";
         libelle_puht.name="puht"+nb;
-        libelle_puht.placeholder="Quantite";
+        libelle_puht.placeholder="PU HT";
         libelle.appendChild(libelle_select);
         libelle.appendChild(libelle_qte);
         libelle.appendChild(libelle_puht);
@@ -78,13 +78,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         tva.step="0.01";
         tva.className="saisie";
         tva.name="tva"+nb;
-        tva.placeholder="Quantite";
+        tva.placeholder="TVA";
         let ttc=document.createElement("input");
         ttc.type="number";
         ttc.step="0.01";
         ttc.className="saisie";
         ttc.name="ttc"+nb;
-        ttc.placeholder="Quantite";
+        ttc.placeholder="TTC";
         secondLine.appendChild(tva);
         secondLine.appendChild(ttc);
 
