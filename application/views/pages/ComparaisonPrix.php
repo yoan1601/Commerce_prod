@@ -7,9 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
       <h5 id="compare-title" class="title">Comparaison de prix</h5>
-
+      <form action="<?= site_url("moinsDisant/saveBonCommande") ?>" method="post">
       <div class="card-price">
-        <form action="<?= site_url("moinsDisant/saveBonCommande") ?>" method="post">
           <?php for($i=1;$i<=count($proformas);$i++){ ?>
           <div class="container-table">
               <p><center><span><?= $proformas[$i-1]["proforma"]->nom_fournisseur ?></span></center></p>
@@ -48,11 +47,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
           <?php } ?>
           <input type="hidden" name="demande" value="<?= $demande ?>">
-          <button type="submit">Generer les bons de commande</button>
-        </form>
       <p class="trans">.</p>
     </div>
-    <p class="finalbutton" ><center><button  class="finalbutton">Generer les bons de commande</button></center></p>
-
+    <p class="finalbutton" ><center><button type="submit" class="finalbutton">Generer les bons de commande</button></center></p>
+    </form>
 </body>
 </html>
