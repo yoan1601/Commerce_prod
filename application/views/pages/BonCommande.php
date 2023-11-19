@@ -5,102 +5,107 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php 
   $this->load->view('templates/sidebarHeader');
 ?>
-
-      <div class="card">
-        <div class="container-besoin">
+      <style>
+        @media print{
+          @page{
+            margin: 0;
+            width: 100%;
+          }
+          header, aside, #boutons{
+            display: none !important;
+          }
+        }
+      </style>
+      <div class="container-fluid">
+        <div class="card">
+          <div class="container-besoin">
             <h5 class="title">Bon de commmande</h5>
             <p>
                 <div class="container-generic">
                     <div class="container1">
-                        <p>Fournisseur : Fournisses</p>
-                        <p>Date de tirage : date</p>
-                        <p>numero de bon de commande :ID BC'ID</p>
-                        <p>Nom du bon de commande : libelle</p>
+                        <p>Fournisseur : <?= $bonCommande->nom_fournisseur ?></p>
+                        <p>Date de tirage : <?= $bonCommande->date_creation_bon ?></p>
+                        <p>numero de bon de commande :<?= $bonCommande->numero_bon ?></p>
+                        <p>Nom du bon de commande : <?= $bonCommande->libelle_bon ?></p>
                     </div>
                     <div class="container1">
-                        <p>Delai de livraison:</p>
-                        <p>Livraison partielle:</p>
-                        <p>Mode de payement:</p>
+                        <p>Delai de livraison: <?= $bonCommande->delai_livraison_bon ?></p>
+                        <p>Livraison partielle: <?= $livrePart ?></p>
+                        <p>Mode de payement: <?= $bonCommande->nom_mode ?></p>
                     </div>
                 </div>
             </p>
-            <form action="" method="get">
-                    <div class="card-body">
-                      <p>
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th scope="col">Catégorie</th>
-                            <th scope="col">Designation</th>
-                            <th scope="col">Quantité</th>
-                            <th scope="col">PU HT</th>
-                            <th scope="col">TVA</th>
-                            <th scope="col">TTC</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Cahier</td>
-                                <td>13</td>
-                                <td>12</td>
-                                <td>20202</td>
-                                <td>20202</td>
-                                <td>20202</td>                                
-                              </tr>
-                              <tr>
-                                <td>Cahier</td>
-                                <td>13</td>
-                                <td>12</td>
-                                <td>20202</td>
-                                <td>20202</td>
-                                <td>20202</td>                              
-                              </tr>
-                              <tr>
-                                <td>Cahier</td>
-                                <td>13</td>
-                                <td>12</td>
-                                <td>20202</td>
-                                <td>20202</td>
-                                <td>20202</td>                           
-                              </tr>
-                              <tr class="total">
-                                <td></td>
-                                <td></td>
-                                <td>Total</td>
-                                <td>202</td>
-                                <td>402</td>
-                                <td>302</td>                           
-                              </tr>
-                        </tbody>
-                    </table>
-                    </p>
-                </div>
-            </form>
-            <p>Arreté le present bon de commande a la somme de TTC en lettre</p>
+            <div class="card-body">
+              <p>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">PU HT</th>
+                    <th scope="col">TVA</th>
+                    <th scope="col">TTC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($bonCommande->details as $d){ ?>
+                    <tr>
+                        <td><?= $d->nom_categorie ?></td>
+                        <td><?= $d->nom_article ?></td>
+                        <td><?= $d->quantite_detail_bon ?></td>
+                        <td><?= $d->puht_detail_bon ?> Ar</td>
+                        <td><?= $d->tva_detail_bon ?> Ar</td>
+                        <td><?= $d->ttc_detail_bon ?> Ar</td>                                
+                      </tr>
+                  <?php } ?>
+                  <tr>
+                      <td border="0"></td>
+                      <td border="0"></td>
+                      <td border="0"></td>
+                      <td border="0"></td>
+                      <td>Somme</td>
+                      <td><?= $somme ?> Ar</td>
+                </tbody>
+              </table>
+              </p>
+            </div>
+            <p>Arreté le present bon de commande a la somme de <?= $sommeLettre ?> Ar</p>
             <p>
-                <div class="container-generic">
-                    <div class="container1">
-                        <center>
-                            <p>La societe</p>
-                            <p class="trans">.</p>
-                            <p class="trans">.</p>
-                        </center>
-                    </div>
-                    <div class="container1">
-                        <center>
-                            <p class="signature">Le Fournisseur</p>
-                            <p class="trans">.</p>
-                            <p class="trans">.</p>
-                        </center>
-                    </div>
-                </div>  
+            <div class="container-generic">
+                <div class="container1">
+                    <center>
+                        <p>La societe</p>
+                        <p class="trans">.</p>
+                        <p class="trans">.</p>
+                    </center>
+                </div>
+                <div class="container1">
+                    <center>
+                        <p class="signature">Le Fournisseur</p>
+                        <p class="trans">.</p>
+                        <p class="trans">.</p>
+                    </center>
+                </div>
+            </div>  
             </p>
-            <p> 
-                <button>PDF</button>
+            <p id="boutons"> 
+              <button id="pdf">PDF</button>
+              <form action="<?= site_url("bonCommande/validerBCDG") ?>" method="post">
+                <input type="hidden" name="idbon" value="<?= $bonCommande->id_bon ?>">
                 <button class="pdf-near" type="submit">Valider</button>
+              </form>
             </p>
             </div>
             <p class="trans">.</p>
         </div>
+      </div>
     </body>
+<script>
+  let toprint=document.getElementById("printable");
+  let pdf=document.getElementById("pdf");
+  pdf.addEventListener("click", function(){
+    window.print();
+  });
+</script>
 </html>  

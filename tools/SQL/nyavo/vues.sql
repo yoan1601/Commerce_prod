@@ -26,7 +26,20 @@ create or replace view v_bon_commande_non_valide as
     where vbf.id_valid_bon_fin is null;
 
 create or replace view v_bon_commande_non_valide_montant as
-    select vb.date_creation_bon, vb.numero_bon, fournisseurs.nom_fournisseur, sum(vb.ttc_detail_bon) as montant
+    select vb.id_bon, vb.date_creation_bon, vb.numero_bon, fournisseurs.nom_fournisseur, sum(vb.ttc_detail_bon) as montant
     from v_bon_commande_non_valide as vb
     join fournisseurs on vb.id_fournisseur_bon=fournisseurs.id_fournisseur
-    group by vb.date_creation_bon, vb.numero_bon, fournisseurs.nom_fournisseur;
+    group by vb.id_bon, vb.date_creation_bon, vb.numero_bon, fournisseurs.nom_fournisseur;
+
+create or replace view v_bon_commande_non_valide_dg as
+    select *
+    from v_bon_commande_details as vc
+    join validation_bon_commande_finances as vbf on vc.id_bon=vbf.id_bon_valid_bon_fin
+    left join validation_bon_commande_dg as vdg on vc.id_bon=vdg.id_bon_valid_bon_dg
+    where vdg.id_valid_bon_dg is null;
+
+create or replace view v_bon_commande_non_valide_dg_montant as
+    select vdg.id_bon, vdg.date_creation_bon, vdg.numero_bon, fournisseurs.nom_fournisseur, sum(vdg.ttc_detail_bon) as montant
+    from v_bon_commande_non_valide_dg as vdg
+    join fournisseurs on vdg.id_fournisseur_bon=fournisseurs.id_fournisseur
+    group by vdg.id_bon, vdg.date_creation_bon, vdg.numero_bon, fournisseurs.nom_fournisseur;

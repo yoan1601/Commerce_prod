@@ -14,9 +14,9 @@ class SaisieProformaModel extends CI_Model {
         $query=$query->result();
         return $query;
     }
-    public function insertProforma($fournisseur, $delai, $details){
-        $query="insert into proformas(id_fournisseur_proforma, delai_livraison_proforma) values(%s, '%s')";
-        $query=sprintf($query, $fournisseur, $delai);
+    public function insertProforma($fournisseur, $delai, $details, $demande){
+        $query="insert into proformas(id_fournisseur_proforma, delai_livraison_proforma, id_demande_proforma_proforma) values(%s, '%s', %s)";
+        $query=sprintf($query, $fournisseur, $delai, $demande);
         $this->db->query($query);
         $lastId=$this->getLastIdProforma();
         foreach($details as $detail){

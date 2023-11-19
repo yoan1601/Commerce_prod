@@ -2,10 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SaisieProforma extends CI_Controller {
-	public function index()
+	public function index($idDemande)
 	{
 		$fournisseurs=$this->saisieproforma->selectAllFournisseurs();
 		$articles=$this->saisieproforma->selectAllArticles();
+		$data["demande"]=$idDemande;
 		$data["fournisseurs"]=$fournisseurs;
 		$data["articles"]=$articles;
 		$this->load->view("pages/SaisieProForma.php", $data);
@@ -41,7 +42,8 @@ class SaisieProforma extends CI_Controller {
 		}
 		$fournisseur=$this->input->post("fournisseur");
 		$delai=$this->input->post("delai");
-		$this->saisieproforma->insertProforma($fournisseur, $delai, $details);
-		redirect("saisieProforma");
+		$demande=$this->input->post("demande");
+		$this->saisieproforma->insertProforma($fournisseur, $delai, $details, $demande);
+		redirect("proForma");
     }
 }
