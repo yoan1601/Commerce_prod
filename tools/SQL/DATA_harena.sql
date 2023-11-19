@@ -1,3 +1,6 @@
+INSERT INTO employes (matricule_emp, nom_emp, id_poste_emp) VALUES('E009', 'Finn LeComte', 13);
+INSERT INTO employes (matricule_emp, nom_emp, id_poste_emp) VALUES ('E010', 'David Guy', 9);
+
 INSERT INTO departements (nom_dept) VALUES
 ('Achats');
 
