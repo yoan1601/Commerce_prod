@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
       </style>
       <div class="container-fluid">
-        <div class="card">
+        <div id="printable" class="card">
           <div class="container-besoin">
             <h5 class="title">Bon de commmande</h5>
             <p>

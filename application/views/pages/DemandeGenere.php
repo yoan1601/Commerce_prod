@@ -5,7 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <?php
 $this->load->view('templates/sidebarHeader');
 ?>
-<div class="card">
+<div id="printable" class="card">
   <div class="container-besoin">
     <h5 class="title">Demande de pro format</h5>
     <form action="<?= site_url("besoinAchat/envoieDemande") ?>" method="post">
@@ -40,12 +40,18 @@ $this->load->view('templates/sidebarHeader');
       </table>
       </p>
     </div>
-    <p><button>PDF</button><button class="pdf-near" type="submit">Envoyer</button></p>
+    <p><button id="pdf">PDF</button><button class="pdf-near" type="submit">Envoyer</button></p>
     </form>
   </div>
   <p class="trans">.</p>
 </div>
 
 </body>
-
+<script>
+  let toprint=document.getElementById("printable");
+  let pdf=document.getElementById("pdf");
+  pdf.addEventListener("click", function(){
+    window.print();
+  });
+</script>
 </html>
