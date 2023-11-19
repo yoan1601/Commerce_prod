@@ -2,12 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MoinsDisant extends CI_Controller {
-	public function index()
+	public function index($demande)
 	{
 		$modePaiements=$this->moinsdisant->selectAllModePaiements();
-		$proformas=$this->moinsdisant->selectAllProformatByDemande(1);
+		$proformas=$this->moinsdisant->selectAllProformatByDemande($demande);
 		$proformas=$this->moinsdisant->affecteMoinsDisant($proformas);
-		$data["demande"]=1;
+		$data["demande"]=$demande;
 		$data["modePaiements"]=$modePaiements;
 		$data["proformas"]=$proformas;
         $this->load->view("pages/ComparaisonPrix", $data);
@@ -39,6 +39,6 @@ class MoinsDisant extends CI_Controller {
 			}
 			$this->moinsdisant->insertBonCommande($proformaMoinsDisant, $livrePart[$i], $modes[$i]);
 		}
-		redirect("moinsDisant");
+		redirect("proForma");
 	}
 }

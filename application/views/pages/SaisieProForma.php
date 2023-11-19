@@ -32,6 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <input type="number" step="0.01" class="saisie" name="ttc1" id="" placeholder="TTC">
                 </p>
                 <generate id="generate"></generate>
+                <input type="hidden" name="demande" value="<?= $demande ?>">
                 <p><input class="submiter" type="submit" value="Valider"></p>
             </form>
             <p><button id="ajouter">Ajouter une ligne +</button></p>

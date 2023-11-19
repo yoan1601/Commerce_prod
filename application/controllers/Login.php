@@ -27,7 +27,7 @@ class Login extends CI_Controller {
         // </form>";
 		$errorLog=str_replace("_", " ", $errorLog);
 		$data["errorLog"]=$errorLog;
-		$this->load->view('pages/login', $data);
+		$this->load->view('pages/Login', $data);
 	}
     public function seConnecter(){
         $nom_emp=$this->input->post("nom_emp");
