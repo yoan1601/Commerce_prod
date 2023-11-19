@@ -27,7 +27,8 @@ CREATE  TABLE proformas (
 	id_proforma          INT    NOT NULL AUTO_INCREMENT  PRIMARY KEY,
 	date_proforma        TIMESTAMP  DEFAULT (CURRENT_TIMESTAMP)  NOT NULL   ,
 	id_fournisseur_proforma INT    NOT NULL   ,
-	delai_livraison_proforma TIMESTAMP    NOT NULL   
+	delai_livraison_proforma TIMESTAMP    NOT NULL ,
+	id_demande_proforma_proforma INT    NOT NULL
  ) engine=InnoDB;
 
 CREATE  TABLE services ( 
@@ -60,7 +61,7 @@ CREATE  TABLE bon_commandes (
 	id_bon               INT    NOT NULL AUTO_INCREMENT  PRIMARY KEY,
 	id_fournisseur_bon   INT    NOT NULL   ,
 	date_creation_bon    TIMESTAMP  DEFAULT (CURRENT_TIMESTAMP)  NOT NULL   ,
-	numero_bon           VARCHAR(255)    NOT NULL   ,
+	numero_bon           VARCHAR(255)       ,
 	libelle_bon          VARCHAR(255)    NOT NULL   ,
 	delai_livraison_bon  TIMESTAMP    NOT NULL   ,
 	is_livraison_part_bon INT    NOT NULL   ,
@@ -181,3 +182,5 @@ ALTER TABLE validation_bon_commande_dg ADD CONSTRAINT fk_validation_bon_commande
 ALTER TABLE validation_bon_commande_finances ADD CONSTRAINT fk_validation_bon_commande_finances_bon_commandes FOREIGN KEY ( id_bon_valid_bon_fin ) REFERENCES bon_commandes( id_bon ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE validation_bon_commande_finances ADD CONSTRAINT fk_validation_bon_commande_finances_employes FOREIGN KEY ( id_emp_valid_bon_fin ) REFERENCES employes( id_emp ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE commercial.employes ADD motdepasse VARCHAR(255)  NOT NULL DEFAULT (1234);

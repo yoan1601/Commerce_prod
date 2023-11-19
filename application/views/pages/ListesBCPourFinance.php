@@ -30,7 +30,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <td><?= $b->nom_fournisseur ?></td>
                               <td><?= $b->montant ?> Ar</td>
                               <td class="action2">
-                                <a href="<?= site_url("bonCommande/detailBonDeptAchat/".$b->id_bon) ?>"><button class="valider">Detail</button></a>
+                                <form action="<?= site_url('bonCommande/validerBCFinance') ?>" method="post">
+                                  <input type="hidden" name="idbon" value="<?= $b->id_bon ?>">
+                                  <button class="valider">Valider</button>
+                                </form>
                               </td>
                             </tr>
                           <?php } ?>

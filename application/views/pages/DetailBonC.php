@@ -8,8 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="card">
         <div class="container-besoin">
             <h5 class="title">Details bon de commmande</h5>
-            <p>Fournisseur</p>
-            <p>ID:?idBC? Generé le :01/01/2023</p>
+            <p><?= $bonCommande->nom_fournisseur ?></p>
+            <p>ID:<?= $bonCommande->numero_bon ?> Generé le :<?= $bonCommande->date_creation_bon ?></p>
             <form action="" method="get">
                     <div class="card-body">
                       <p>
@@ -24,27 +24,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           </tr>
                         </thead>
                         <tbody>
+                          <?php foreach($bonCommande->details as $d){ ?>
                             <tr>
-                                <td>Cahier</td>
-                                <td>13</td>
-                                <td>20202</td>
-                                <td>20202</td>
-                                <td>20202</td>                                
-                              </tr>
-                              <tr>
-                                <td>Cahier</td>
-                                <td>13</td>
-                                <td>20202</td>
-                                <td>20202</td>
-                                <td>20202</td>                                
-                              </tr>
-                              <tr>
-                                <td>Cahier</td>
-                                <td>13</td>
-                                <td>20202</td>
-                                <td>20202</td>
-                                <td>20202</td>                                
-                              </tr>
+                              <td><?= $d->nom_article ?></td>
+                              <td><?= $d->quantite_detail_bon ?></td>
+                              <td><?= $d->puht_detail_bon ?></td>
+                              <td><?= $d->tva_detail_bon ?></td>
+                              <td><?= $d->ttc_detail_bon ?></td>                                
+                            </tr>
+                          <?php } ?>
                         </tbody>
                     </table>
                     </p>

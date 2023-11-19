@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class LoginModel extends CI_Model {
 
 	/**
 	 * Index Page for this controller.
@@ -18,8 +18,14 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
-	public function index()
-	{
-		redirect("login");
-	}
+	public function checkLogin($nom, $mdp){
+        $query="select * from v_user_dept where nom_emp='%s' and motdepasse='%s'";
+        $query=sprintf($query, $nom, $mdp);
+        $query=$this->db->query($query);
+        $query=$query->result();
+        if(count($query)>0){
+            return $query[0];
+        }
+        return false;
+    }
 }

@@ -7,256 +7,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
       <h5 id="compare-title" class="title">Comparaison de prix</h5>
-
+      <form action="<?= site_url("moinsDisant/saveBonCommande") ?>" method="post">
       <div class="card-price">
-        <div class="container-table">
-            <p><center><span>Fournisseur</span></center></p>
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Libellé</th>
-                    <th scope="col">Quantité</th>
-                    <th scope="col">PU</th>
-                    <th scope="col">Prix total</th>                    
-                  </tr>
-                </thead>
-                <tbody>
+          <?php for($i=1;$i<=count($proformas);$i++){ ?>
+          <div class="container-table">
+              <p><center><span><?= $proformas[$i-1]["proforma"]->nom_fournisseur ?></span></center></p>
+              <table class="table table-striped">
+                  <thead>
                     <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                </tbody>
-              </table>
-              <p>
-                Mode de payement
-                <select name="" id="">
-                    <option value="">Carte</option>
-                </select>
-              </p>
-              <p>livraison partielle
-                <input type="radio" name="" id="">oui
-                <input type="radio" name="" id="">non
-              </p>
-        </div>
-        <div class="container-table">
-            <p><center><span>Fournisseur</span></center></p>
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Libellé</th>
-                    <th scope="col">Quantité</th>
-                    <th scope="col">PU</th>
-                    <th scope="col">Prix total</th>                    
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                </tbody>
-              </table>
-              <p>
-                Mode de payement
-                <select name="" id="">
-                    <option value="">Carte</option>
-                </select>
-              </p>
-              <p>livraison partielle
-                <input type="radio" name="" id="">oui
-                <input type="radio" name="" id="">non
-              </p>
-        </div>
-        <div class="container-table">
-            <p><center><span>Fournisseur</span></center></p>
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Libellé</th>
-                    <th scope="col">Quantité</th>
-                    <th scope="col">PU</th>
-                    <th scope="col">Prix total</th>                    
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                </tbody>
-              </table>
-              <p>
-                Mode de payement
-                <select name="" id="">
-                    <option value="">Carte</option>
-                </select>
-              </p>
-              <p>livraison partielle
-                <input type="radio" name="" id="">oui
-                <input type="radio" name="" id="">non
-              </p>
-        </div>
-        <div class="container-table">
-            <p><center><span>Fournisseur</span></center></p>
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Libellé</th>
-                    <th scope="col">Quantité</th>
-                    <th scope="col">PU</th>
-                    <th scope="col">Prix total</th>                    
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                </tbody>
-              </table>
-              <p>
-                Mode de payement
-                <select name="" id="">
-                    <option value="">Carte</option>
-                </select>
-              </p>
-              <p>livraison partielle
-                <input type="radio" name="" id="">oui
-                <input type="radio" name="" id="">non
-              </p>
-        </div>
-        <div class="container-table">
-            <p><center><span>Fournisseur</span></center></p>
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Libellé</th>
-                    <th scope="col">Quantité</th>
-                    <th scope="col">PU</th>
-                    <th scope="col">Prix total</th>                    
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                      <tr>
-                        <td>Cahier</td>
-                        <td>15</td>
-                        <td>10 000Ar</td>
-                        <td>150 000Ar</td>
-                      </tr>
-                </tbody>
-              </table>
-              <p>
-                Mode de payement
-                <select name="" id="">
-                    <option value="">Carte</option>
-                </select>
-              </p>
-              <p>livraison partielle
-                <input type="radio" name="" id="">oui
-                <input type="radio" name="" id="">non
-              </p>
-        </div>
-        <p class="trans">.</p>
+                      <th scope="col">Libellé</th>
+                      <th scope="col">Quantité</th>
+                      <th scope="col">PU</th>
+                      <th scope="col">Prix total</th>                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <?php foreach($proformas[$i-1]["details"] as $d){ ?>
+                        <tr style="<?php if($d->isCheapest){ echo "background-color:chartreuse"; } ?>">
+                          <td><?= $d->nom_article ?></td>
+                          <td><?= $d->quantite_detail_proforma." ".$d->symbole_unite ?></td>
+                          <td><?= $d->puht_detail_proforma ?> Ar</td>
+                          <td><?= $d->ttc_detail_proforma ?> Ar</td>
+                        </tr>
+                      <?php } ?>
+                  </tbody>
+                </table>
+                <p>
+                  Mode de payement
+                  <select name="mode<?= $i ?>" id="">
+                    <?php foreach($modePaiements as $m){ ?>
+                      <option value="<?= $m->id_mode_paiement ?>"><?= $m->nom_mode ?></option>
+                    <?php } ?>
+                  </select>
+                </p>
+                <p>livraison partielle
+                  <input type="radio" name="livraisonpart<?= $i ?>" id="" required value="1">oui
+                  <input type="radio" name="livraisonpart<?= $i ?>" id="" required value="0">non
+                </p>
+          </div>
+          <?php } ?>
+          <input type="hidden" name="demande" value="<?= $demande ?>">
+      <p class="trans">.</p>
     </div>
-    <p class="finalbutton" ><center><button  class="finalbutton">Generer les bons de commande</button></center></p>
-
+    <p class="finalbutton" ><center><button type="submit" class="finalbutton">Generer les bons de commande</button></center></p>
+    </form>
 </body>
 </html>
