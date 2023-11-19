@@ -32,7 +32,7 @@ $this->load->view('templates/sidebarHeader');
                     <?php } ?>
               </td>
               <td class="action2">
-                <button class="valider">saisir un Pro Forma</button>
+                <button class="valider"><a style="color: white;" href="<?= site_url("saisieProforma") ?>">saisir un Pro Forma</a></button>
                 <button class="valider">voir les moins disant</button>
               </td>
             </tr>
